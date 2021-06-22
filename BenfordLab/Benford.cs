@@ -15,7 +15,7 @@ namespace BenfordLab
 
     public class Benford
     {
-       
+
         public static BenfordData[] calculateBenford(string csvFilePath)
         {
             // load the data
@@ -26,7 +26,7 @@ namespace BenfordLab
                 {
                     Country = data.Groups[1].Value,
                     Population = int.Parse(data.Groups[2].Value)
-                });
+                }); 
 
             // manipulate the data!
             //
@@ -34,16 +34,18 @@ namespace BenfordLab
             //   - Country
             //   - Digit (using: FirstDigit.getFirstDigit() )
             // 
+                .Select(data=> new {Count = data.Groups[1].Value, Digit = getFirstDigit() });
             // Then:
             //   - you need to count how many of *each digit* there are
-            //
+            //   
             // Lastly:
             //   - transform (select) the data so that you have a list of
             //     BenfordData objects
             //
-            var m = ??? ;
+            var m = Count ;
 
             return m.ToArray();
+            }
         }
     }
 }
